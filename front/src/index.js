@@ -5,6 +5,9 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {Provider} from "react-redux"
 import {store} from "./store"
+import axios from "axios" 
+
+axios.defaults.baseURL = 'http://localhost:8081';
 
 ReactDOM.render(
   <React.StrictMode>

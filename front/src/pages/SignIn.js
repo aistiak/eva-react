@@ -1,21 +1,25 @@
 import React, { useState } from 'react';
 import { useDispatch, useStore } from 'react-redux';
 import { Link } from 'react-router-dom';
-
+import { useHistory } from "react-router-dom";
 import Header from '../partials/Header';
 import { login } from '../store/auth/auth.action'
 
 function SignIn() {
   const dispatch = useDispatch()
+  const history = useHistory();
   const [store,SetStore] = useState({
     email : '' ,
     password : ''
   })
 
   const action = {
-    SignIn() {
+    SignIn(e) {
+      console.log(e)
+      e.preventDefault()
       dispatch(login({...store})).then(res => {
         console.log(res)
+        if(res.statusCode == 200) history.push("/account")
       })
     }
   }
@@ -68,7 +72,7 @@ function SignIn() {
                   </div>
                   <div className="flex flex-wrap -mx-3 mt-6">
                     <div className="w-full px-3">
-                      <button className="btn text-white bg-blue-600 hover:bg-blue-700 w-full" onClick={action.SignIn}>Sign in</button>
+                      <button className="btn text-white bg-blue-600 hover:bg-blue-700 w-full" type="submit" onClick={action.SignIn}>Sign in</button>
                     </div>
                   </div>
                 </form>

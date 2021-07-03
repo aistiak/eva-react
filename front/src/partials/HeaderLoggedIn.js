@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-
+import { useDispatch } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
+import {logOut} from "../store/auth/auth.action"
 function Header() {
 
   const [top, setTop] = useState(true);
-
+  const dispatch = useDispatch()
+  const history = useHistory()
   // detect whether user has scrolled the page down by 10px 
   useEffect(() => {
     const scrollHandler = () => {
@@ -40,7 +42,9 @@ function Header() {
           <nav className="flex flex-grow">
             <ul className="flex flex-grow justify-end flex-wrap items-center">
               <li>
-                <Link to="/signin" className="font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out">Logout</Link>
+                <Link onClick={() =>{
+                    dispatch(logOut()).then( res => history.push("/") )
+                }} className="font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out">Logout</Link>
               </li>
               <li>
                 {/* <Link to="/signup" className="btn-sm text-gray-200 bg-gray-900 hover:bg-gray-800 ml-3">

@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
 import HeaderLoggedIn from '../partials/HeaderLoggedIn';
-import { updateProfile } from '../store/auth/auth.action'
+import { updateProfile ,deleteProfile} from '../store/auth/auth.action'
 import {useForm} from "react-hook-form"
+
 function SignIn() {
   const dispatch = useDispatch()
   const history = useHistory();
@@ -28,6 +29,18 @@ function SignIn() {
         const res = await dispatch(updateProfile(data))
         console.log(res)
         if(res.statusCode == 200) SetStep(0)
+    },
+    async DeleteProfile() {
+      let res = window.confirm('Are you sure to delete your profile ?') ;
+      if(res) {
+        dispatch(deleteProfile()).then( res => {
+          console.log(res)
+          if(res.statusCode == 200) {
+            alert(`profile delete`)
+            history.push("/")
+          }
+        })
+      }
     }
   }
 
@@ -137,7 +150,12 @@ function SignIn() {
                     </div>
                     <div className="flex flex-wrap -mx-3 mt-6">
                         <div className="w-full px-3">
-                        <button className="btn text-white bg-blue-600 hover:bg-blue-700 w-full" type="submit" >save</button>
+                        <button className="btn text-white bg-blue-600 hover:bg-blue-700 w-full" type="submit" >Save</button>
+                        </div>
+                    </div>
+                    <div className="flex flex-wrap -mx-3 mt-6">
+                        <div className="w-full px-3">
+                        <button className="btn text-white bg-red-600 hover:bg-red-700 w-full" onClick={action.DeleteProfile} >Delete</button>
                         </div>
                     </div>
                     </form>

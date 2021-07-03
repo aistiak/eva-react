@@ -17,9 +17,10 @@ export const login = ({email,password}) => async (dispatch) => {
 export const logOut = () => async (dispatch) => {
 
 
+
     await dispatch({ 
         type : 'SET_AUTH_REDUCER' ,
-        payload : { isLoggedIn :false}
+        payload : { isLoggedIn :false,user:{}}
     }) 
 }
 
@@ -52,6 +53,16 @@ export const updateProfile = ({name,dob,profession}) => async (dispatch,useState
     return res?.data 
 }
 
-export const deleteProfile = () => async (dispatch) => {
+export const deleteProfile = () => async (dispatch,useState) => {
+    const user = useState().authReducer.user 
+    const res = await axios.post("delete",{
+        ...user 
+    }) 
 
+    console.log(res) 
+    await dispatch({ 
+        type : 'SET_AUTH_REDUCER' ,
+        payload : { isLoggedIn :false,user:{}}
+    }) 
+    return res?.data 
 }

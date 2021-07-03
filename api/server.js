@@ -31,11 +31,12 @@ app.post('/login',async function(req,res) {
             msg : 'both email and password are required'
         })
     }
-
-    if (await checkUser(params))
+    const user = await checkUser(params)
+    if (user)
         res.send({
             statusCode : 200 ,
-            msg : `welcome `
+            msg : `welcome ` ,
+            user : user 
         })
     else 
     res.send({
@@ -103,6 +104,7 @@ app.post('/update',async function(req,res) {
 
     const params = req.body 
     const user = await checkUser(params )
+    // const {name,password,profession,dob} = params 
     if(!user) res.send({statusCode:400 , msg : 'not authenticated'})
     else {
         const updatedUser = await prisma.user.update({

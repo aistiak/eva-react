@@ -6,9 +6,10 @@ export const login = ({email,password}) => async (dispatch) => {
     console.log(`logging in`)
     console.log({email,password})
     const res = await axios.post(`login`,{email,password}) 
+    if(res?.data?.statusCode == 200)
     await dispatch({ 
         type : 'SET_AUTH_REDUCER' ,
-        payload : { isLoggedIn :true}
+        payload : { isLoggedIn :true ,user : {...res.data.user,password:password} }
     }) 
     return res?.data 
 }
@@ -35,8 +36,20 @@ export const signUp = ({name,email,password,profession,dob}) => async (dispatch)
 }
 
 
-export const updateProfile = ({}) => async (dispatch) => {
+export const updateProfile = ({name,dob,profession}) => async (dispatch,useState) => {
+    console.log(`updating profile`)
+    const user = useState().authReducer.user 
+    const res = await axios.post("update",{
+        name,
+        dob ,
+        profession ,
+        email : user.email ,
+        password : user.password 
+    })
 
+    console.log(res)
+
+    return res?.data 
 }
 
 export const deleteProfile = () => async (dispatch) => {

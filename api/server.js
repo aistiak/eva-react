@@ -59,7 +59,12 @@ app.post("/signup",async function(req,res){
                 password : bcrypt.hashSync(params.password,10)
             }
         })
-        res.send(user) 
+        res.send({
+            statusCode : 200 ,
+            data : {
+                user 
+            }
+        }) 
     }catch(e) {
         console.log(e)
         res.send({

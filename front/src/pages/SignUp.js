@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-
+import { Link, useHistory } from 'react-router-dom';
+import {useForm} from "react-hook-form"
 import Header from '../partials/Header';
-
+import {signUp} from '../store/auth/auth.action'
+import { useDispatch } from 'react-redux';
 function SignUp() {
+  const dispatch = useDispatch()
+  const history = useHistory()
   const [step,SetStep] = useState(0) 
   const [state,SetState] = useState({
     name : '' ,
@@ -12,9 +15,13 @@ function SignUp() {
     dob : '' ,
     profession : '' 
   })
+  const { register , handleSubmit } = useForm()
   const action = {
-    SignUp (e) {
-      e.preventDefault() 
+    async SignUp (data) {
+      console.log(data)
+      const res = await dispatch(signUp(data))
+      console.log(res)
+      if(res.statusCode == 200) history.push('/signin')
     }
   }
   return (
@@ -37,25 +44,25 @@ function SignUp() {
             
               {/* Form */}
               <div className="max-w-sm mx-auto">
-                <form>
+                <form onSubmit={handleSubmit(action.SignUp)}>
                   {step == 0 && <>
                   
                       <div className="flex flex-wrap -mx-3 mb-4">
                         <div className="w-full px-3">
                           <label className="block text-gray-800 text-sm font-medium mb-1" htmlFor="name">Full Name <span className="text-red-600">*</span></label>
-                          <input id="name" type="text" className="form-input w-full text-gray-800" placeholder="Enter your name" required />
+                          <input  {...register("name")} id="name" type="text" className="form-input w-full text-gray-800" placeholder="Enter your name" required />
                         </div>
                       </div>
                       <div className="flex flex-wrap -mx-3 mb-4">
                         <div className="w-full px-3">
                           <label className="block text-gray-800 text-sm font-medium mb-1" htmlFor="dob">Date Of Birth <span className="text-red-600">*</span></label>
-                          <input id="dob" type="date" className="form-input w-full text-gray-800" placeholder="Enter your email address" required />
+                          <input  {...register("dob")} id="dob" type="date" className="form-input w-full text-gray-800" placeholder="Enter your email address" required />
                         </div>
                       </div>
                       <div className="flex flex-wrap -mx-3 mb-4">
                         <div className="w-full px-3">
                           <label className="block text-gray-800 text-sm font-medium mb-1" htmlFor="profession">Profession <span className="text-red-600">*</span></label>
-                          <input id="profession" type="text" className="form-input w-full text-gray-800" placeholder="Enter your password" required />
+                          <input  {...register("profession")} id="profession" type="text" className="form-input w-full text-gray-800" placeholder="Enter your password" required />
                         </div>
                       </div>
 
@@ -77,19 +84,19 @@ function SignUp() {
                         <div className="flex flex-wrap -mx-3 mb-4">
                           <div className="w-full px-3">
                             <label className="block text-gray-800 text-sm font-medium mb-1" htmlFor="email">Email <span className="text-red-600">*</span></label>
-                            <input id="email" type="email" className="form-input w-full text-gray-800" placeholder="Enter your email address" required />
+                            <input {...register("email")} id="email" type="email" className="form-input w-full text-gray-800" placeholder="Enter your email address" required />
                           </div>
                         </div>
                         <div className="flex flex-wrap -mx-3 mb-4">
                           <div className="w-full px-3">
                             <label className="block text-gray-800 text-sm font-medium mb-1" htmlFor="password">Password <span className="text-red-600">*</span></label>
-                            <input id="password" type="password" className="form-input w-full text-gray-800" placeholder="Enter your password" required />
+                            <input {...register("password")} id="password" type="password" className="form-input w-full text-gray-800" placeholder="Enter your password" required />
                           </div>
                         </div>
 
                         <div className="flex flex-wrap -mx-3 mt-6">
                           <div className="w-full px-3">
-                            <button onClick={action.SignUp} className="btn text-white bg-blue-600 hover:bg-blue-700 w-full">Sign up</button>
+                            <button type="submit"  className="btn text-white bg-blue-600 hover:bg-blue-700 w-full">Sign up</button>
                           </div>
                         </div>
                     

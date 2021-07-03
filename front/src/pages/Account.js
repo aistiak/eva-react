@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
@@ -10,6 +10,7 @@ function SignIn() {
   const dispatch = useDispatch()
   const history = useHistory();
   const user = useSelector( state => state.authReducer.user)
+  const isLoggedIn = useSelector( state => state.authReducer.isLoggedIn)
   const {register,handleSubmit } = useForm({
     defaultValues: useMemo(() => {
         console.log("User has changed");
@@ -22,6 +23,10 @@ function SignIn() {
     email : '' ,
     password : ''
   })
+  
+  useEffect(() => {
+    if(!isLoggedIn) history.push("/signin")
+  },[isLoggedIn])
 
   const action = {
     async updateUser(data) {

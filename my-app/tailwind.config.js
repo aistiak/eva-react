@@ -4,7 +4,12 @@ module.exports = {
   purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: theme => ({
+        // 'wave-1': "url('./public/assets/imgs/Shape_01.png')",
+        // 'footer-texture': "url('/img/footer-texture.png')",
+       })
+    },
   },
   variants: {
     extend: {},

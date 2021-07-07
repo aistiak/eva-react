@@ -1,8 +1,8 @@
 export default function Mid() {
   const items = [...Array(3).fill(1)];
   return (
-    <div className="bg-white-300 h-auto flex flex-col justify-around items-center mb-20 mx-10">
-      <div className="border-b-4 border-grey text-4xl p-3">Pacakages</div>
+    <div className="bg-white-300 h-auto flex flex-col justify-around items-center mb-20 mx-10" style={{fontFamily:"PoppinsRegular"}}>
+      <div className="border-b-4 border-grey text-4xl p-3" style={{fontFamily:"PoppinsBold"}}>Pacakages</div>
       <div className="flex flex-col lg:flex-row  lg:space-x-8">
         {/* {['Singularity','Plurality','Professional'].map((v, i) => (
           <> */}

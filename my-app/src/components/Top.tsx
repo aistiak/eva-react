@@ -34,17 +34,17 @@ export default function Top() {
               <div className="flex items-center">
                 <img src={ !state.scrolled ? "/assets/imgs/logo_white.png"  : "/assets/imgs/logo_01.png"} alt="" />
               </div>
-              <div className="hidden  md:flex flex-row  items-center">
-                <div className="mr-3 ml-3">Home</div>
+              <div className="hidden  md:flex flex-row  items-center" style={{fontFamily:"PoppinsRegular"}}>
+                <div className="mr-3 ml-3 ">Home</div>
                 <div className="mr-3 ml-3">Portfolio</div>
               </div>
-              <div className="hidden md:block">
+              <div className="hidden md:block"  style={{fontFamily:"PoppinsRegular"}}>
                 {!state.scrolled ? 
                 
-                <button className="bg-white  hover:bg-blue-700 text-purple-700 font-bold py-2 px-4 rounded-full">
+                <button className="bg-white  text-purple-700 font-bold py-2 px-4 rounded-full">
                   HIRE ME
                 </button> :
-                <button className="bg-gradient-to-r from-purple-600 to-pink-300  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                <button className="bg-gradient-to-r from-purple-600 to-pink-300   text-white font-bold py-2 px-4 rounded-full">
                   HIRE ME
                 </button>
               
@@ -71,13 +71,13 @@ export default function Top() {
               </div>
             </div>
           </div>
-          <div className={`mobile-options md:hidden bg-white flex flex-col items-center p-10 fixed w-screen`}>
+          <div className={`mobile-options md:hidden bg-white flex flex-col items-center p-10 fixed w-screen`}  style={{fontFamily:"PoppinsRegular"}} >
               <div className="mb-20 flex flex-col justify-between items-center">
                 <div className="mb-8">Home</div>
                 <div>Portfolio</div>
               </div>
               <div>
-                  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-20 rounded-full">HIRE ME</button>
+                  <button className="bg-gradient-to-r from-purple-600  via-purple-500 to-purple-400  text-white font-bold py-2 px-20 rounded-full">HIRE ME</button>
               </div>
           </div>
         </nav>
@@ -85,27 +85,27 @@ export default function Top() {
         <div className={`mt-12 ${styles.wave__1}`}>
           <div className="mx-20 md:mx-40 flex flex-wrap justify-center md:justify-between text-white items-center">
             <div className="flex flex-col items-center text-center md:items-start md:text-left">
-              <div>
-                <p className="text-xs">BUSINESS WORKFLOW</p>
+              <div style={{fontFamily:"LatoRegular"}}>
+                <p className="text-xs"   >BUSINESS WORKFLOW</p>
               </div>
               <div className="mt-10">
-                <p className="text-4xl font-bold">
+                <p className="text-4xl"  style={{fontFamily:"PoppinsBold"}}>
                   GET THE MOST <br />
                   EFFICIENT UI DESIGN FOR <br />
                   YOUR BUSINESS NOW !
                 </p>
               </div>
               <div className="mt-10">
-                <p className="text-base ">
+                <p className="text-base " style={{fontFamily:"LatoRegular"}} >
                   HIRE ME TO DESIGN A CLEAN AND MODERN UI FOR YOUR PRODUCT
                   WEBSITE
                 </p>
               </div>
-              <div className="mt-10 flex flex-col sm:flex-row flex-wrap mb-10">
+              <div className="mt-10 flex flex-col sm:flex-row flex-wrap mb-10" style={{fontFamily:"PoppinsRegular"}}>
                 <button className="bg-white  text-purple-700 font-bold py-2 px-20 md:px-8 rounded-full mr-4 mb-4 sm:mb-0">
                   HIRE  ME  
                 </button>
-                <button className="bg-transparent border-solid border-2 border-white hover:bg-blue-700 text-white font-bold py-2 px-20 md:px-8 rounded-full">
+                <button className="bg-transparent border-solid border-2 border-white  text-white font-bold py-2 px-20 md:px-8 rounded-full">
                   PORTFOLIO
                 </button>
               </div>

@@ -11,6 +11,9 @@ module.exports = {
        })
     },
   },
+  fontFamily : {
+    'poppins-bold' : ['PoppinsBold'] , 
+  },
   variants: {
     extend: {},
   },

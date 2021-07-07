@@ -2,3 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+
+@font-face {
+    font-family: PoppinsBold;
+    src: url("http://localhost:3000/assets/Fonts/Poppins/Poppins-Bold.ttf");
+}
+  
+@font-face {
+    font-family: PoppinsRegular;
+    src: url("http://localhost:3000/assets/Fonts/Poppins/Poppins-Regular.ttf");
+}
+  
+@font-face {
+    font-family: LatoRegular;
+    src: url("http://localhost:3000/assets/Fonts/Poppins/Raleway-Regular.ttf");
+}
+
+button{
+    font-size: small;
+}

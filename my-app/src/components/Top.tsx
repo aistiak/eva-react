@@ -88,17 +88,18 @@ export default function Top() {
               <div style={{fontFamily:"LatoRegular"}}>
                 <p className="text-xs"   >BUSINESS WORKFLOW</p>
               </div>
-              <div className="mt-10">
+              <div className="mt-5">
                 <p className="text-4xl"  style={{fontFamily:"PoppinsBold"}}>
-                  GET THE MOST <br />
-                  EFFICIENT UI DESIGN FOR <br />
-                  YOUR BUSINESS NOW !
+                  Get the most <br />
+                  efficient ui design for <br />
+                  your business now !
+                  
                 </p>
               </div>
-              <div className="mt-10">
+              <div className="mt-5">
                 <p className="text-base " style={{fontFamily:"LatoRegular"}} >
-                  HIRE ME TO DESIGN A CLEAN AND MODERN UI FOR YOUR PRODUCT
-                  WEBSITE
+                  Hire me to design a clean and modern ui for your product
+                  website
                 </p>
               </div>
               <div className="mt-10 flex flex-col sm:flex-row flex-wrap mb-10" style={{fontFamily:"PoppinsRegular"}}>

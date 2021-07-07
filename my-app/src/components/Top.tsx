@@ -27,9 +27,9 @@ export default function Top() {
   }
   return (
     <div>
-      <div className=" flex flex-col  bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 ">
-        <nav className="my-header">
-          <div className="border-b-2 border-black md:border-grey font-bold text-white md:mb-10 bar">
+      <div className=" flex flex-col  bg-gradient-to-r to-purple-600 from-pink-300 ">
+        <nav className="my-header cursor-pointer">
+          <div className="border-b border-grey-100 md:border-grey font-bold text-white md:mb-10 bar">
             <div className="flex flex-row justify-between p-3 mx-5 md:mx-40 ">
               <div className="flex items-center">
                 <img src={ !state.scrolled ? "/assets/imgs/logo_white.png"  : "/assets/imgs/logo_01.png"} alt="" />
@@ -39,9 +39,16 @@ export default function Top() {
                 <div className="mr-3 ml-3">Portfolio</div>
               </div>
               <div className="hidden md:block">
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                {!state.scrolled ? 
+                
+                <button className="bg-white  hover:bg-blue-700 text-purple-700 font-bold py-2 px-4 rounded-full">
+                  HIRE ME
+                </button> :
+                <button className="bg-gradient-to-r from-purple-600 to-pink-300  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
                   HIRE ME
                 </button>
+              
+                }
               </div>
               <div className="md:hidden flex items-center">
                     <button onClick={toggleMenu}>
@@ -95,10 +102,10 @@ export default function Top() {
                 </p>
               </div>
               <div className="mt-10 flex flex-col sm:flex-row flex-wrap mb-10">
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-20 md:px-8 rounded-full mr-4 mb-4 sm:mb-0">
+                <button className="bg-white  text-purple-700 font-bold py-2 px-20 md:px-8 rounded-full mr-4 mb-4 sm:mb-0">
                   HIRE  ME  
                 </button>
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-20 md:px-8 rounded-full">
+                <button className="bg-transparent border-solid border-2 border-white hover:bg-blue-700 text-white font-bold py-2 px-20 md:px-8 rounded-full">
                   PORTFOLIO
                 </button>
               </div>

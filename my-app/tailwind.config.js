@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: theme => ({
-        // 'wave-1': "url('./public/assets/imgs/Shape_01.png')",
+        'wave-1': "url('http://localhost:3000/assets/imgs/Shape_01.png')",
         // 'footer-texture': "url('/img/footer-texture.png')",
        })
     },

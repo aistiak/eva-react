@@ -3,6 +3,10 @@
 .scroll-header {
   position: fixed;
   width: 100%;
+  
+
+}
+.scroll-header > .bar {
   background: white;
   color: black;
 }

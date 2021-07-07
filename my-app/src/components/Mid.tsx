@@ -6,7 +6,7 @@ export default function Mid() {
       <div className="flex flex-col lg:flex-row  lg:space-x-8">
         {['Singularity','Plurality','Professional'].map((v, i) => (
           <>
-            <div className="lg:max-w-md py-4 px-8 bg-white shadow-lg rounded-lg my-20">
+            <div className="lg:max-w-md py-4 px-8 bg-white shadow-lg rounded-lg my-5">
                 <div className="py-3">
                     <p>Getting Started</p>
                 </div>

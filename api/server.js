@@ -15,7 +15,7 @@ const checkUser = async ({email,password}) => {
             email : email 
         }
     })  
-    if ( user?.password && bcrypt.compareSync(password,user.password)) return user  
+    if ( user && user.password && bcrypt.compareSync(password,user.password)) return user  
     return false 
 }
 
@@ -24,25 +24,33 @@ app.get('/', function (req, res) {
 })
 
 app.post('/login',async function(req,res) {
-    const params = req.body
-    if(!params.email || !params.password){
+    try{
+        const params = req.body
+        if(!params.email || !params.password){
+            res.send({
+                statusCode : 400 ,
+                msg : 'both email and password are required'
+            })
+        }
+        const user = await checkUser(params)
+        if (user)
+            res.send({
+                statusCode : 200 ,
+                msg : `welcome ` ,
+                user : user 
+            })
+        else 
         res.send({
             statusCode : 400 ,
-            msg : 'both email and password are required'
-        })
-    }
-    const user = await checkUser(params)
-    if (user)
+            msg : 'user not found'
+        }) 
+    }catch(e){
         res.send({
-            statusCode : 200 ,
-            msg : `welcome ` ,
-            user : user 
-        })
-    else 
-    res.send({
-        statusCode : 400 ,
-        msg : 'user not found'
-    }) 
+            statusCode : 400 ,
+            msg : 'user not found'
+        }) 
+    }
+
 })
 
 app.post("/signup",async function(req,res){
@@ -126,7 +134,7 @@ app.post('/update',async function(req,res) {
 
 })
 
-var server = app.listen(8081, function () {
+var server = app.listen(8081,"127.0.0.1", function () {
    var host = server.address().address
    var port = server.address().port
    

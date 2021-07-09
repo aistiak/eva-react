@@ -20,6 +20,9 @@ function SignIn() {
       dispatch(login({...store})).then(res => {
         console.log(res)
         if(res.statusCode == 200) history.push("/account")
+        else alert(`username or passowrd incorrect`)
+      }).catch(e => {
+        alert(`error`)
       })
     }
   }

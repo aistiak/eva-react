@@ -6,6 +6,7 @@ export const login = ({email,password}) => async (dispatch) => {
     console.log(`logging in`)
     console.log({email,password})
     const res = await axios.post(`login`,{email,password}) 
+    console.log(res)
     if(res?.data?.statusCode == 200)
     await dispatch({ 
         type : 'SET_AUTH_REDUCER' ,
@@ -49,7 +50,10 @@ export const updateProfile = ({name,dob,profession}) => async (dispatch,useState
     })
 
     console.log(res)
-
+    await dispatch({ 
+        type : 'SET_AUTH_REDUCER' ,
+        payload : { user : {...res.data.data.user, password : user.password } }
+    }) 
     return res?.data 
 }
 

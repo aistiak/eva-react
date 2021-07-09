@@ -12,10 +12,7 @@ function SignIn() {
   const user = useSelector( state => state.authReducer.user)
   const isLoggedIn = useSelector( state => state.authReducer.isLoggedIn)
   const {register,handleSubmit } = useForm({
-    defaultValues: useMemo(() => {
-        console.log("User has changed");
-        return user;
-      }, [user])
+    defaultValues: user 
   })
  
   const [step,SetStep] = useState(0) 

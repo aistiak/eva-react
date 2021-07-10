@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from "react";
 import { Item } from "../data/index";
 const t: Item = {
@@ -19,19 +20,19 @@ export function TreeItem({ item, items }: PropType) {
       <div className="flex flex-row p-3 items-center border-2" >
         <div className="mr-4">
 
-            <h1>{item.Display}</h1>
+          <h1>{item.Display}</h1>
         </div>
         <div>
-            {childItems.length != 0 && (
+          {childItems.length != 0 && (
             <button
-                className="text-black "
-                onClick={() =>
+              className="text-black "
+              onClick={() =>
                 setState({ ...state, isCollapsed: !state.isCollapsed })
-                }
+              }
             >
-               {!state.isCollapsed ? <> &darr; </> : <>&uarr;</>}
+              {!state.isCollapsed ? <> &darr; </> : <>&uarr;</>}
             </button>
-            )}
+          )}
         </div>
       </div>
       <div className="ml-6">

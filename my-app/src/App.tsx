@@ -1,7 +1,8 @@
 
 import './App.css';
 import TreeView from './components/TreeView';
-function App() {
+import React from "react"
+ function App() {
   return (
     <div className="App">
         <TreeView/>
